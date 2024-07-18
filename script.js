@@ -13,11 +13,11 @@ let getHumanChoice = () => {
 
 function playRound(humanChoice, computerChoice) {
     if((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') || (humanChoice === 'scissors' && computerChoice === 'paper')) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        results.textContent = `You win! ${humanChoice} beats ${computerChoice}.`;
     } else if((computerChoice === 'rock' && humanChoice === 'scissors') || (computerChoice === 'paper' && humanChoice === 'rock') || (computerChoice === 'scissors' && humanChoice === 'paper')) {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+        results.textContent = `You lose! ${computerChoice} beats ${humanChoice}.`;
     } else {
-        console.log(`It is a tie! ${humanChoice} is the same as ${computerChoice}.`);
+        results.textContent = `It is a tie! ${humanChoice} is the same as ${computerChoice}.`;
     }
 }
 
@@ -26,10 +26,12 @@ const body = document.getElementsByTagName("BODY")[0];
 const rock = document.createElement("button");
 const paper = document.createElement("button");
 const scissors = document.createElement("button");
+const results = document.createElement("div");
 
 body.appendChild(rock);
 body.appendChild(paper);
 body.appendChild(scissors);
+body.appendChild(results);
 
 rock.textContent = "Rock";
 paper.textContent = "Paper";
