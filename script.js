@@ -22,7 +22,13 @@ function playRound(humanChoice, computerChoice) {
         results.textContent = `It is a tie! ${humanChoice} is the same as ${computerChoice}.`;
     }
 
-    score.textContent = `Your score: ${humanScore} --- Computer score: ${computerScore}`
+    if(humanScore === 5) {
+        score.textContent = `YOU WIN!!! You reached a score of ${humanScore}`;
+    } else if(computerScore === 5) {
+        score.textContent = `YOU LOSE!!! The computer reached a score of ${computerScore}`;
+    } else {
+        score.textContent = `Your score: ${humanScore} --- Computer score: ${computerScore}`;
+    }
 }
 
 let humanScore = 0, computerScore = 0;
