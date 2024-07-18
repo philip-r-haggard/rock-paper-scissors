@@ -11,21 +11,32 @@ let getHumanChoice = () => {
     return humanChoice;
 };
 
-function playRound(humanChoice, computerChoice) {
-    if((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') || (humanChoice === 'scissors' && computerChoice === 'paper')) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
-        humanScore++;
-    } else if((computerChoice === 'rock' && humanChoice === 'scissors') || (computerChoice === 'paper' && humanChoice === 'rock') || (computerChoice === 'scissors' && humanChoice === 'paper')) {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
-        computerScore;
-    } else {
-        console.log(`It is a tie! ${humanChoice} is the same as ${computerChoice}.`);
+function playGame() {
+    function playRound(humanChoice, computerChoice) {
+        if((humanChoice === 'rock' && computerChoice === 'scissors') || (humanChoice === 'paper' && computerChoice === 'rock') || (humanChoice === 'scissors' && computerChoice === 'paper')) {
+            console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+            ++humanScore;
+        } else if((computerChoice === 'rock' && humanChoice === 'scissors') || (computerChoice === 'paper' && humanChoice === 'rock') || (computerChoice === 'scissors' && humanChoice === 'paper')) {
+            console.log(`You lose! ${computerChoice} beats ${humanChoice}.`);
+            ++computerScore;
+        } else {
+            console.log(`It is a tie! ${humanChoice} is the same as ${computerChoice}.`);
+        }
     }
+
+    let humanScore = 0, computerScore = 0;
+    let humanSelection = '', computerSelection = '';
+
+    for(let i = 0; i < 5; i++) {
+        humanSelection = getHumanChoice();
+        computerSelection = getComputerChoice();
+
+        playRound(humanSelection, computerSelection);
+    }
+
+    if(humanScore > computerScore) console.log(`You won the game! You won ${humanScore} rounds while the computer won ${computerScore} rounds.`);
+    if(computerScore > humanScore) console.log(`You lost the game! You won ${humanScore} rounds while the computer won ${computerScore} rounds.`);
+    if(computerScore === humanScore) console.log(`You tied with the computer! You won ${humanScore} rounds while the computer won ${computerScore} rounds.`);
 };
 
-let humanScore = 0, computerScore = 0;
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
+playGame();
